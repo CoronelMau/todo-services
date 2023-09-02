@@ -1,4 +1,4 @@
-import UserModel from "../schemas/user.schema";
+import UserModel from "../schemas/user.schema.js";
 
 const userPorfileController = async(req, res) =>{
   const { id } = req;

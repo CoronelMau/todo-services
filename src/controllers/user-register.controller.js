@@ -1,5 +1,5 @@
 import { hash } from 'bcrypt';
-import UserModel from '../schemas/user.schema';
+import UserModel from '../schemas/user.schema.js';
 
 const userRegisterController = async(req, res) =>{
   const { _id, name, email, password } = req.body;

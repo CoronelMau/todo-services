@@ -2,14 +2,14 @@ import { Type } from '@sinclair/typebox'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import addErrors from 'ajv-errors'
-import { emailDTOSchema, passwordDTOSchema } from './dto-types'
+import { emailDTOSchema, passwordDTOSchema } from './dto-types.js'
 
 const LoginDTOSchema = Type.Object({
   email: emailDTOSchema,
   password: passwordDTOSchema
 },{
   additionalProperties: false,
-  errorMessages:{
+  errorMessage:{
     additionalProperties: 'Object format not valid'
   }
 });
