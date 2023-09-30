@@ -36,3 +36,26 @@ export const passwordDTOSchema = Type.String({
     maxLength: 'Password must be less than 25 charachters long'
   }
 });
+
+export const titleDTOSchema = Type.String({
+  minLength: 2,
+  errorMessage: {
+    minLength: 'Title must be at least 2 characters long'
+  }
+});
+
+export const idAuthorDTOSchema = Type.String({ 
+  minLength: 2,
+  errorMessage: {
+    minLength: 'Author must be at least 2 characters long'
+  }
+});
+
+export const taskDTOSchema = Type.Array({})
+
+export const taskIdDTOSchema = Type.String({
+  minLength: 2,
+  errorMessage: {
+    minLength: 'Title must be at least 2 characters long'
+  }
+});

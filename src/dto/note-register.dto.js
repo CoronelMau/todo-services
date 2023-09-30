@@ -1,15 +1,16 @@
 import { Type } from '@sinclair/typebox';
 import Ajv from 'ajv';
-import addFormats from 'ajv-formats';
 import addErrors from 'ajv-errors';
-import { emailDTOSchema, 
-  nameDTOSchema, 
-  passwordDTOSchema } from './dto-types.js';
+import {
+  titleDTOSchema,
+  taskDTOSchema,
+  idAuthorDTOSchema
+ } from './dto-types.js';
 
-const RegisterDTOSchema = Type.Object({
-  name: nameDTOSchema,
-  email: emailDTOSchema,
-  password: passwordDTOSchema
+const NoteDTOSchema = Type.Object({
+  title: titleDTOSchema,
+  tasks: taskDTOSchema,
+  author: idAuthorDTOSchema 
 },{
   additionalProperties: false,
   errorMessage: {
@@ -18,14 +19,12 @@ const RegisterDTOSchema = Type.Object({
 });
 
 const ajv = new Ajv({allErrors: true}).addKeyword('kind').addKeyword('modifier');
-ajv.addFormat('password', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/);
 
-addFormats(ajv, ['email']);
 addErrors(ajv);
 
-const validateSchema = ajv.compile(RegisterDTOSchema);
+const validateSchema = ajv.compile(NoteDTOSchema);
 
-const userRegisterDTO = (req, res, next) =>{
+const noteRegisterDTO = (req, res, next) =>{
   const isDTOValid = validateSchema(req.body);
 
   if(!isDTOValid)
@@ -34,4 +33,4 @@ const userRegisterDTO = (req, res, next) =>{
     next();
 }
 
-export default userRegisterDTO;
+export default noteRegisterDTO;
