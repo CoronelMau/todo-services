@@ -14,16 +14,19 @@ import noteRegisterController from "../controllers/note-register.controller.js";
 import noteAccessController from "../controllers/note-access.controller.js";
 import noteDeleteDTO from "../dto/note-delete.dto.js";
 import noteDeleteController from "../controllers/note-delete.controller.js";
+import taskUpdateCheckDTO from "../dto/task-update_check.dto.js";
+import taskUpdateCheckController from "../controllers/task-update_check.controller.js";
 
 const userRouter = Router();
 
 userRouter.post('/sign-up', userRegisterDTO, userRegisterController);
 userRouter.post('/login', userLoginDTO, userLoginController);
 userRouter.get('/profile', userJWTDTO, userPorfileController);
-userRouter.patch('/update-data', userJWTDTO, userUpdateDataDTO, userUpdateDataController);
-userRouter.patch('/change-pwd', userJWTDTO, userChangePwdDTO, userChangePwdController);
+userRouter.put('/update-data', userJWTDTO, userUpdateDataDTO, userUpdateDataController);
+userRouter.put('/change-pwd', userJWTDTO, userChangePwdDTO, userChangePwdController);
 userRouter.post('/note-register', userJWTDTO, noteRegisterDTO, noteRegisterController);
 userRouter.get('/note-access', userJWTDTO, noteAccessController);
 userRouter.delete('/note-delete', userJWTDTO, noteDeleteDTO, noteDeleteController);
+userRouter.put('/check-update', taskUpdateCheckDTO, taskUpdateCheckController);
 
 export default userRouter;

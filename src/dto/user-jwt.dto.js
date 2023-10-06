@@ -1,4 +1,4 @@
-import { errors, jwtVerify } from 'jose'
+import { jwtVerify } from 'jose'
 
 const userJWTDTO = async(req, res, next) => {
   const { authorization } = req.headers;
