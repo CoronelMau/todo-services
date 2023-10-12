@@ -5,8 +5,8 @@ const userJWTDTO = async(req, res, next) => {
 
   if(!authorization) 
     return res.status(401).send('User not authorized');
-
-    const jwt = authorization.split('')[1];
+  
+    const jwt = authorization.split(' ')[1];
 
     if(!jwt) 
       return res.status(401).send('User not authoreized');
@@ -21,7 +21,9 @@ const userJWTDTO = async(req, res, next) => {
       req.id = payload.id;
       next();
     } catch(error){
-      return res.status(401).send('User not authorized');
+
+      console.log(error);
+      return res.status(401).send({errors: ['User not authorized']});
     }
 }
 
