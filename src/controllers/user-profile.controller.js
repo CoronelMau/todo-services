@@ -7,7 +7,7 @@ const userPorfileController = async(req, res) =>{
   if(!existingUserById) return res.status(401).send('User not found');
 
   const { _id, name, email } = existingUserById;
-  return res.send({ _id, name, email });
+  return res.send({ _id, name, email});
 };
 
 export default userPorfileController;
