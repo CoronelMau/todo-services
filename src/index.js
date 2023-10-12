@@ -1,6 +1,5 @@
 import connectDB from './config/db.js';
 import httpServer from './config/http.js';
-import './config/env.js';
 console.clear();
 
 const bootstrap = async ()=> {
